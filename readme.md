@@ -51,7 +51,7 @@ Book sales page in browser.
 3. npx create-react-app folder name
 4. npm install tailwindcss
 
-## **Run Command for this IPL-Project**
+## **Run Command for this Booklist**
 
 Type the command **npm start**.
 Open browser type http://localhost:3000.
