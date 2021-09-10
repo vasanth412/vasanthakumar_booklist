@@ -2,14 +2,22 @@ import React from 'react';
 import { useState } from 'react';
 import Header from './components/Header';
 import UpdateComponent from './components/UpdateComponents';
-import { books } from './data';
+import data from './data';
 
-export const PersonContext = React.createContext();
- 
 function App() {
+  const [books, setBooks] = useState(data);
   const [favorites, setFavorites] = useState([]);
   const [purchaseList, setpurchaseList] = useState([]);
   const [renderComponent, setrenderComponent] = useState('booklist');
+  const [addItem, setAddItem] = useState({
+    id: '',
+    name: '',
+    author: '',
+    img: '',
+    cover: '',
+    price: '',
+    ratings: '',
+  });
 
   // set the name of component
   const updateRenderComponent = (component) => {
@@ -37,20 +45,51 @@ function App() {
     }
   };
 
+  //Remove book from the list
+  const removeBook = (book) => {
+    const newBookList = books.filter((item) => item.id !== book.id);
+    setBooks(newBookList);
+    const removeFavorites = favorites.filter((item) => item.id !== book.id);
+    setFavorites(removeFavorites);
+  };
+
+  // using form
+  const onChange = (e) => {
+    setAddItem((item) => {
+      return { ...item, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setBooks((books) => [...books, addItem]);
+    setAddItem({
+      id: '',
+      name: '',
+      author: '',
+      img: '',
+      cover: '',
+      price: '',
+      ratings: '',
+    });
+  };
+
   return (
-    <PersonContext.Provider
-      value={{
-        buyBook,
-        isFavorite,
-        toggleFavorite,
-        books,
-        favorites,
-        purchaseList,
-      }}
-    >
+    <>
       <Header updateRenderComponent={updateRenderComponent} />
-      <UpdateComponent renderComponent={renderComponent} />
-    </PersonContext.Provider>
+      <UpdateComponent
+        books={books}
+        addItem={addItem}
+        favorites={favorites}
+        purchaseList={purchaseList}
+        removeBook={removeBook}
+        renderComponent={renderComponent}
+        buyBook={buyBook}
+        toggleFavorite={toggleFavorite}
+        handleSubmit={handleSubmit}
+        onChange={onChange}
+      />
+    </>
   );
 }
 

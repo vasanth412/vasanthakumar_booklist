@@ -25,42 +25,64 @@ body {
   }
 }
 .button {
-  position: relative;
-  left: 20%;
-  right: 50%;
-  bottom: 20%;
-  top: 100%;
-  background-color: #4d01ff;
-  border: none;
-  color: white;
-  padding: 10px 15px;
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin-left: -250px;
+  outline: none;
+  color: rgb(252, 241, 241);
+  background-color: #633fc7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px rgb(156, 154, 154);
+  margin-left: 5rem;
 }
 .button1 {
-  background-color: #3fe40d;
-  border: none;
-  color: white;
-  padding: 15px 32px;
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f17730;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px rgb(156, 154, 154);
+  margin-left: 2rem;
+}
+.button4 {
   display: inline-block;
-  font-size: 20px;
-  margin-left: 900px;
+  padding: 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: rgb(185, 43, 43);
+  background-color: #49dcf0;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px rgb(156, 154, 154);
+  margin-left: 2rem;
 }
 .button2 {
-  background-color: #e40da3;
-  border: none;
-  color: white;
-  padding: 15px 32px;
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin-left: 50px;
+  outline: none;
+  color: rgb(255, 236, 236);
+  background-color: #911621;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px rgb(156, 154, 154);
+  margin-left: 5rem;
 }
 .button3 {
   display: inline-block;
@@ -74,7 +96,23 @@ body {
   background-color: #7f4ece;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px rgb(156, 154, 154);
+  box-shadow: 0 5px rgb(156, 154, 154);
+  margin-left: 0rem;
+}
+.button5 {
+  display: inline-block;
+  padding: 5px 30px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4eb0ce;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 1px rgb(156, 154, 154);
+  margin-left: 3.2rem;
 }
 .book {
   background: #fff;
@@ -108,4 +146,10 @@ body {
 .book .ratings i {
   color: gold;
   font-size: 1rem;
+}
+.form-style-2 {
+  max-width: 100px;
+  padding: 200px 120px 250px 500px;
+  color: #4eb0ce;
+  font: 25px Arial, Helvetica, sans-serif;
 }

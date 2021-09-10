@@ -1,7 +1,15 @@
 import React from 'react';
 import Book from './Book';
 
-export default function BookList({ title, books, purchaselist }) {
+export default function BookList({
+  title,
+  books,
+  purchaselist,
+  toggle,
+  removeBook,
+  buyBook,
+  toggleFavorite,
+}) {
   return (
     <>
       <section>
@@ -15,6 +23,10 @@ export default function BookList({ title, books, purchaselist }) {
                 key={`${book.id}-${Date.now()}`}
                 book={book}
                 purchaselist={purchaselist}
+                toggle={toggle}
+                removeBook={removeBook}
+                buyBook={buyBook}
+                toggleFavorite={toggleFavorite}
               />
             ))}
           </div>
@@ -24,4 +36,3 @@ export default function BookList({ title, books, purchaselist }) {
     </>
   );
 }
- 
