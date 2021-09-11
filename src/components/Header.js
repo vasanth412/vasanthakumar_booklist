@@ -1,10 +1,15 @@
-export default function Header({ updateRenderComponent }) {
+import React from 'react';
+import { PersonContext } from '../App';
+
+export default function Header() {
+  const context = React.useContext(PersonContext);
+
   return (
-    <header>
+    <header className="head">
       <button
         className="button"
         title="Book Store"
-        onClick={() => updateRenderComponent('booklist')}
+        onClick={() => context.updateRenderComponent('bookList')}
       >
         Book Store
       </button>
@@ -12,7 +17,7 @@ export default function Header({ updateRenderComponent }) {
       <button
         className="button4"
         title="Add book"
-        onClick={() => updateRenderComponent('addbook')}
+        onClick={() => context.updateRenderComponent('addBook')}
       >
         Add Book
       </button>
@@ -20,7 +25,7 @@ export default function Header({ updateRenderComponent }) {
       <button
         className="button4"
         title="Remove Book"
-        onClick={() => updateRenderComponent('removebook')}
+        onClick={() => context.updateRenderComponent('removeBook')}
       >
         Remove Book
       </button>
@@ -28,7 +33,7 @@ export default function Header({ updateRenderComponent }) {
       <button
         className="button1"
         title="Favorites"
-        onClick={() => updateRenderComponent('favorites')}
+        onClick={() => context.updateRenderComponent('favorites')}
       >
         favorite
       </button>
@@ -36,7 +41,7 @@ export default function Header({ updateRenderComponent }) {
       <button
         className="button2"
         title="Purchase List"
-        onClick={() => updateRenderComponent('purchaselist')}
+        onClick={() => context.updateRenderComponent('purchaseList')}
       >
         Purchases
       </button>

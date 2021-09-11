@@ -2,31 +2,27 @@ import React from 'react';
 import Book from './Book';
 
 export default function BookList({
-  title,
+  tittle,
   books,
-  purchaselist,
+  purchaseList,
+  checkFavorite,
   toggle,
-  removeBook,
-  buyBook,
-  toggleFavorite,
 }) {
   return (
     <>
       <section>
-        <div>{title}</div>
+        <div>{tittle}</div>
         {books.length === 0 ? (
-          <p>No Books in {title}...!</p>
+          <p>No Books in {tittle}...!</p>
         ) : (
-          <div className="booklist">
+          <div className="bookList">
             {books.map((book) => (
               <Book
-                key={`${book.id}-${Date.now()}`}
+                key={book.id}
                 book={book}
-                purchaselist={purchaselist}
                 toggle={toggle}
-                removeBook={removeBook}
-                buyBook={buyBook}
-                toggleFavorite={toggleFavorite}
+                purchaseList={purchaseList}
+                checkFavorite={checkFavorite}
               />
             ))}
           </div>

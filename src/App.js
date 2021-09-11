@@ -4,11 +4,13 @@ import Header from './components/Header';
 import UpdateComponent from './components/UpdateComponents';
 import data from './data';
 
+export const PersonContext = React.createContext();
+
 function App() {
   const [books, setBooks] = useState(data);
   const [favorites, setFavorites] = useState([]);
-  const [purchaseList, setpurchaseList] = useState([]);
-  const [renderComponent, setrenderComponent] = useState('booklist');
+  const [purchaseList, setPurchaseList] = useState([]);
+  const [renderComponent, setRenderComponent] = useState('bookList');
   const [addItem, setAddItem] = useState({
     id: '',
     name: '',
@@ -21,17 +23,16 @@ function App() {
 
   // set the name of component
   const updateRenderComponent = (component) => {
-    setrenderComponent(component);
+    setRenderComponent(component);
   };
 
   // check if the book is in the wish list or not
   const isFavorite = (book) => {
     return favorites.filter((item) => item.id === book.id).length !== 0;
   };
-
-  // add the book to puchased books list
+  // add the book to purchased books list
   const buyBook = (book) => {
-    setpurchaseList([...purchaseList, book]);
+    setPurchaseList([...purchaseList, book]);
   };
 
   // add or remove the book from wish list
@@ -45,10 +46,17 @@ function App() {
     }
   };
 
+  //Remove from favorite
+  const removeFavorite = (book) => {
+    const newFavorites = favorites.filter((item) => item.id !== book.id);
+    setFavorites(newFavorites);
+  };
+
   //Remove book from the list
   const removeBook = (book) => {
     const newBookList = books.filter((item) => item.id !== book.id);
     setBooks(newBookList);
+
     const removeFavorites = favorites.filter((item) => item.id !== book.id);
     setFavorites(removeFavorites);
   };
@@ -75,21 +83,26 @@ function App() {
   };
 
   return (
-    <>
-      <Header updateRenderComponent={updateRenderComponent} />
-      <UpdateComponent
-        books={books}
-        addItem={addItem}
-        favorites={favorites}
-        purchaseList={purchaseList}
-        removeBook={removeBook}
-        renderComponent={renderComponent}
-        buyBook={buyBook}
-        toggleFavorite={toggleFavorite}
-        handleSubmit={handleSubmit}
-        onChange={onChange}
-      />
-    </>
+    <PersonContext.Provider
+      value={{
+        updateRenderComponent,
+        renderComponent,
+        buyBook,
+        addItem,
+        removeBook,
+        removeFavorite,
+        isFavorite,
+        toggleFavorite,
+        books,
+        favorites,
+        purchaseList,
+        onChange,
+        handleSubmit,
+      }}
+    >
+      <Header />
+      <UpdateComponent />
+    </PersonContext.Provider>
   );
 }
 

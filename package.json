@@ -1,5 +1,5 @@
 {
-  "name": "booklist",
+  "name": "bookList",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

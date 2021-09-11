@@ -1,14 +1,19 @@
-export function AddBook({ handleSubmit, onChange, addItem }) {
+import React from 'react';
+import { PersonContext } from '../App';
+
+export function AddBook() {
+  const context = React.useContext(PersonContext);
+
   return (
-    <form className="form-style-2" onSubmit={handleSubmit}>
+    <form className="form-style-2" onSubmit={context.handleSubmit}>
       <div>
         <input
           type="text"
           id="id"
           name="id"
           placeholder="ID"
-          value={addItem.id}
-          onChange={onChange}
+          value={context.addItem.id}
+          onChange={context.onChange}
           required
         />
         <input
@@ -16,8 +21,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="img"
           name="img"
           placeholder="Image url"
-          value={addItem.img}
-          onChange={onChange}
+          value={context.addItem.img}
+          onChange={context.onChange}
           required
         />
         <input
@@ -25,8 +30,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="name"
           name="name"
           placeholder="Name"
-          value={addItem.name}
-          onChange={onChange}
+          value={context.addItem.name}
+          onChange={context.onChange}
           required
         />
         <input
@@ -34,8 +39,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="author"
           name="author"
           placeholder="Author Name"
-          value={addItem.author}
-          onChange={onChange}
+          value={context.addItem.author}
+          onChange={context.onChange}
           required
         />
         <input
@@ -43,8 +48,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="cover"
           name="cover"
           placeholder="Cover"
-          value={addItem.cover}
-          onChange={onChange}
+          value={context.addItem.cover}
+          onChange={context.onChange}
           required
         />
         <input
@@ -52,8 +57,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="price"
           name="price"
           placeholder="Price"
-          value={addItem.price}
-          onChange={onChange}
+          value={context.addItem.price}
+          onChange={context.onChange}
           required
         />
         <input
@@ -61,8 +66,8 @@ export function AddBook({ handleSubmit, onChange, addItem }) {
           id="ratings"
           name="ratings"
           placeholder="Ratings"
-          value={addItem.ratings}
-          onChange={onChange}
+          value={context.addItem.ratings}
+          onChange={context.onChange}
           required
         />
       </div>

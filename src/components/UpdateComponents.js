@@ -1,69 +1,42 @@
 import React from 'react';
 import BookList from './BookList';
 import { AddBook } from './AddBook';
+import { PersonContext } from '../App';
 
-export default function UpdateComponent({
-  books,
-  addItem,
-  favorites,
-  purchaseList,
-  removeBook,
-  renderComponent,
-  buyBook,
-  toggleFavorite,
-  handleSubmit,
-  onChange,
-}) {
+export default function UpdateComponent() {
+  const context = React.useContext(PersonContext);
+
   return (
     <>
       {/* render the list of books available*/}
-      {renderComponent === 'booklist' && (
-        <BookList
-          title="Book List"
-          books={books}
-          buyBook={buyBook}
-          toggleFavorite={toggleFavorite}
-        />
-      )}
-      {renderComponent === 'addbook' && (
-        <AddBook
-          handleSubmit={handleSubmit}
-          onChange={onChange}
-          addItem={addItem}
-        />
+      {context.renderComponent === 'bookList' && (
+        <BookList tittle="Book List" books={context.books} />
       )}
 
+      {/*Render the Add book */}
+      {context.renderComponent === 'addBook' && <AddBook />}
+
       {/* render the remove book*/}
-      {renderComponent === 'removebook' && (
+      {context.renderComponent === 'removeBook' && (
         <BookList
-          title="Remove Books"
-          books={books}
-          removeBook={removeBook}
-          buyBook={buyBook}
-          toggleFavorite={toggleFavorite}
+          tittle="Remove Books"
+          books={context.books}
           toggle
-          purchaselist
+          purchaseList
         />
       )}
 
       {/* render the favorites list of books */}
-      {renderComponent === 'favorites' && (
-        <BookList
-          title="Favorites"
-          books={favorites}
-          buyBook={buyBook}
-          toggleFavorite={toggleFavorite}
-        />
+      {context.renderComponent === 'favorites' && (
+        <BookList tittle="Favorites" books={context.favorites} checkFavorite />
       )}
 
       {/* render the purchased list of books */}
-      {renderComponent === 'purchaselist' && (
+      {context.renderComponent === 'purchaseList' && (
         <BookList
-          title="Purchase List"
-          books={purchaseList}
-          buyBook={buyBook}
-          toggleFavorite={toggleFavorite}
-          purchaselist
+          tittle="Purchase List"
+          books={context.purchaseList}
+          purchaseList
         />
       )}
     </>
